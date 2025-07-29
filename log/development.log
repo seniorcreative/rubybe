@@ -1,0 +1,147 @@
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-29 05:00:38.865957', '2025-07-29 05:00:38.865959') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGreetings (1)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "greetings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "message" text NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_greetings_on_name" ON "greetings" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('1') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2025-07-29 20:23:24 +1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/icon.png" for 127.0.0.1 at 2025-07-29 20:23:25 +1000
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:24:10 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-29 20:24:10 +1000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:29:57 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:30:05 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/" for 127.0.0.1 at 2025-07-29 20:30:08 +1000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/v1/hello" for 127.0.0.1 at 2025-07-29 20:31:20 +1000
+  
+ActionController::RoutingError (No route matches [GET] "/v1/hello"):
+  
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:31:35 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:31:44 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/" for 127.0.0.1 at 2025-07-29 20:32:05 +1000
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:32:16 +1000
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started POST "/api/v1/hello/steve" for 127.0.0.1 at 2025-07-29 20:34:28 +1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/hello/steve"):
+  
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/hello" for ::1 at 2025-07-29 20:36:30 +1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started GET "/api/v1/hello" for ::1 at 2025-07-29 20:38:25 +1000
+  
+LoadError (cannot load such file -- /Users/stevensmith/Documents/Repos/rubybe/app/controllers/services/hello_service):
+  
+app/controllers/api/v1/hello_controller.rb:1:in `require_relative'
+app/controllers/api/v1/hello_controller.rb:1:in `<main>'
+Started GET "/api/v1/hello" for ::1 at 2025-07-29 20:38:54 +1000
+Processing by Api::V1::HelloController#index as */*
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/icon.png" for 127.0.0.1 at 2025-07-29 20:41:10 +1000
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/" for 127.0.0.1 at 2025-07-29 20:41:44 +1000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stevensmith/.rbenv/versions/3.3.6/lib/ruby/gems/3.3.0/gems/railties-7.2.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/api/v1/hello" for 127.0.0.1 at 2025-07-29 20:41:48 +1000
+Processing by Api::V1::HelloController#create as */*
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/hello/" for 127.0.0.1 at 2025-07-29 20:42:03 +1000
+Processing by Api::V1::HelloController#index as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
