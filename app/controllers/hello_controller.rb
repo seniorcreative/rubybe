@@ -1,30 +1,27 @@
-require 'sinatra/base'
-require_relative '../../lib/base_controller'
 require_relative '../services/hello_service'
 
-module HelloController
-  include BaseController
+class HelloController < ApplicationController
+  def index
+    result = HelloService.get_greeting
+    render json: { data: result, message: 'Hello World retrieved successfully' }
+  end
 
-  def self.registered(app)
-    super
+  def show
+    name = params[:name]
+    result = HelloService.get_personalized_greeting(name)
+    render json: { data: result, message: 'Personalized greeting retrieved successfully' }
+  end
 
-    app.get '/hello' do
-      result = HelloService.get_greeting
-      success_response(result, 'Hello World retrieved successfully')
+  def create
+    name = params[:name]
+    message = params[:message]
+    
+    if name.blank?
+      render json: { error: 'Name is required' }, status: :bad_request
+      return
     end
-
-    app.get '/hello/:name' do
-      name = params[:name]
-      result = HelloService.get_personalized_greeting(name)
-      success_response(result, 'Personalized greeting retrieved successfully')
-    end
-
-    app.post '/hello' do
-      body = parse_json_body
-      validate_required_params(body, ['name'])
-      
-      result = HelloService.create_greeting(body['name'], body['message'])
-      success_response(result, 'Custom greeting created successfully')
-    end
+    
+    result = HelloService.create_greeting(name, message)
+    render json: { data: result, message: 'Custom greeting created successfully' }
   end
 end

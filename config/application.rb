@@ -1,27 +1,22 @@
-require 'logger'
+require_relative "boot"
 
-class Configuration
-  attr_reader :logger, :port, :environment
+require "rails/all"
 
-  def initialize
-    @environment = ENV.fetch('RACK_ENV', 'development')
-    @port = ENV.fetch('PORT', '4567').to_i
-    @logger = Logger.new($stdout)
-    @logger.level = log_level
-  end
+Bundler.require(*Rails.groups)
 
-  private
+module Rubybe
+  class Application < Rails::Application
+    config.load_defaults 7.0
 
-  def log_level
-    case @environment
-    when 'production'
-      Logger::INFO
-    when 'test'
-      Logger::ERROR
-    else
-      Logger::DEBUG
+    config.api_only = true
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
     end
   end
 end
-
-CONFIG = Configuration.new

@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 ruby '3.1.0'
 
-gem 'sinatra', '~> 4.0'
-gem 'sinatra-contrib', '~> 4.0'
+gem 'rails', '~> 7.0'
+gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 6.0'
+gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors', '~> 2.0'
-gem 'dotenv', '~> 3.0'
-gem 'logger', '~> 1.6'
+gem 'dotenv-rails', '~> 3.0'
 
 group :development, :test do
   gem 'rspec', '~> 3.12'
