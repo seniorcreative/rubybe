@@ -1,6 +1,8 @@
-require_relative '../services/hello_service'
+require_relative '../../../services/hello_service'
 
-class HelloController < ApplicationController
+module Api
+  module V1
+    class HelloController < ApplicationController
   def index
     result = HelloService.get_greeting
     render json: { data: result, message: 'Hello World retrieved successfully' }
@@ -23,5 +25,7 @@ class HelloController < ApplicationController
     
     result = HelloService.create_greeting(name, message)
     render json: { data: result, message: 'Custom greeting created successfully' }
+  end
+    end
   end
 end
